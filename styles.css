@@ -4,9 +4,16 @@
     box-sizing: border-box;
 }
 
+/* Prevent horizontal scrolling globally */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 body {
     font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     background: linear-gradient(180deg,
         #fff0f8 0%,
         #ffe8f3 15%,
@@ -21,6 +28,7 @@ body {
     color: #2c2c2c;
     line-height: 1.6;
     position: relative;
+    width: 100vw;
 }
 
 /* Animated flowing gradient overlay - ENHANCED */
@@ -179,6 +187,8 @@ body::before {
     position: relative;
     z-index: 2;
     overflow: hidden;
+    max-width: 100vw;
+    width: 100%;
 }
 
 .hero-section::before {
@@ -428,6 +438,8 @@ body::before {
     padding: 6rem 2rem;
     position: relative;
     z-index: 2;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .memories-section::after {
@@ -481,6 +493,8 @@ body::before {
     opacity: 0;
     transition: opacity 0.8s ease, transform 0.8s ease;
     position: relative;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .memory-card::after {
@@ -719,6 +733,8 @@ body::before {
     position: relative;
     z-index: 2;
     overflow: hidden;
+    max-width: 100vw;
+    width: 100%;
 }
 
 .finale-section::before {
@@ -900,6 +916,8 @@ body::before {
     /* Memories Section - Optimized for mobile scrolling */
     .memories-section {
         padding: 3rem 1rem;
+        width: 100%;
+        max-width: 100vw;
     }
     
     .memories-section::before {
@@ -912,6 +930,8 @@ body::before {
         gap: 1.5rem;
         margin-bottom: 4rem;
         transform: translateY(30px) !important;
+        width: 100%;
+        max-width: 100%;
     }
     
     .memory-card.visible {
@@ -927,6 +947,7 @@ body::before {
         padding: 1rem;
         padding-bottom: 3rem;
         animation: float 5s ease-in-out infinite, polaroidGlow 4s ease-in-out infinite;
+        max-width: 100%;
     }
     
     .polaroid-image {
@@ -938,6 +959,8 @@ body::before {
     /* Memory message - better touch spacing */
     .memory-message {
         padding: 1.5rem;
+        width: 100%;
+        max-width: 100%;
     }
     
     .memory-message h3 {
