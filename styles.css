@@ -50,6 +50,8 @@ body::after {
     animation: flowingGradient 12s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
+    will-change: background-position;
+    transform: translateZ(0);
 }
 
 @keyframes flowingGradient {
@@ -98,6 +100,8 @@ body::before {
     animation: sparkleFloat 8s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
+    will-change: transform, opacity;
+    transform: translateZ(0);
 }
 
 @keyframes sparkleFloat {
@@ -543,6 +547,9 @@ body::before {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     animation: float 4s ease-in-out infinite, polaroidGlow 3s ease-in-out infinite;
     position: relative;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 @keyframes polaroidGlow {
@@ -697,6 +704,7 @@ body::before {
         transparent 70%
     );
     animation: shimmerEffect 3s ease-in-out infinite;
+    will-change: transform;
 }
 
 @keyframes shimmerEffect {
@@ -860,15 +868,22 @@ body::before {
         -moz-osx-font-smoothing: grayscale;
     }
     
-    /* Smoother animations on mobile */
+    /* Reduce animations for better mobile performance */
     body::after {
-        animation: flowingGradient 15s ease-in-out infinite;
+        animation: flowingGradient 20s ease-in-out infinite;
         will-change: background-position;
+        opacity: 0.7;
     }
     
     body::before {
-        animation: sparkleFloat 10s ease-in-out infinite;
+        animation: sparkleFloat 12s ease-in-out infinite;
         will-change: transform, opacity;
+        opacity: 0.7;
+    }
+    
+    /* Disable heavy animations on mobile */
+    .memory-message::before {
+        animation: none;
     }
     
     /* Hero Section */
@@ -942,12 +957,19 @@ body::before {
         width: 80%;
     }
     
-    /* Polaroid optimized for mobile */
+    /* Polaroid optimized for mobile - reduced animations for performance */
     .polaroid {
         padding: 1rem;
         padding-bottom: 3rem;
-        animation: float 5s ease-in-out infinite, polaroidGlow 4s ease-in-out infinite;
+        animation: float 6s ease-in-out infinite;
         max-width: 100%;
+    }
+    
+    /* Disable glow animation on mobile for better performance */
+    @media (max-width: 768px) {
+        .polaroid {
+            animation: float 6s ease-in-out infinite;
+        }
     }
     
     .polaroid-image {

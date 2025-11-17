@@ -119,26 +119,22 @@ memoryCards.forEach(card => {
     observer.observe(card);
 });
 
-// Parallax effect on scroll and progress bar
+// Optimized parallax effect on scroll and progress bar
 let lastScrollY = window.scrollY;
 let ticking = false;
 const scrollProgress = document.querySelector('.scroll-progress');
 
 function updateParallax() {
     const scrollY = window.scrollY;
-    const polaroids = document.querySelectorAll('.polaroid');
     
-    // Update scroll progress bar
+    // Update scroll progress bar only
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     const scrollPercent = (scrollY / (documentHeight - windowHeight)) * 100;
     scrollProgress.style.width = `${scrollPercent}%`;
     
-    polaroids.forEach((polaroid, index) => {
-        const speed = (index % 2 === 0) ? 0.5 : -0.3;
-        const yPos = -(scrollY * speed);
-        polaroid.style.transform = `translateY(${yPos}px)`;
-    });
+    // Remove polaroid parallax for better performance on mobile
+    // The float animation is enough visual interest
     
     ticking = false;
 }
@@ -150,7 +146,7 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
     }
-});
+}, { passive: true });
 
 // Add hover effect for polaroids - mobile optimized
 const polaroids = document.querySelectorAll('.polaroid');
