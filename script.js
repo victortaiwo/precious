@@ -29,10 +29,10 @@ function createParticle() {
     }, duration * 1000);
 }
 
-// Adjust particle frequency for mobile
-const particleInterval = isMobile ? 400 : 300;
-const initialParticles = isMobile ? 20 : 30;
-const sparkleInterval = isMobile ? 2000 : 1500;
+// Adjust particle frequency for mobile - OPTIMIZED
+const particleInterval = isMobile ? 600 : 400; // Slower particle creation
+const initialParticles = isMobile ? 12 : 20; // Fewer initial particles
+const sparkleInterval = isMobile ? 3000 : 2000; // Less frequent sparkles
 
 // Create particles continuously
 setInterval(createParticle, particleInterval);
@@ -191,10 +191,10 @@ function triggerEpicFinale() {
     setTimeout(() => createFireworks(), 5500);
 }
 
-// Massive confetti explosion
+// Massive confetti explosion - OPTIMIZED
 function createMassiveConfetti() {
     const colors = ['#ff6ec7', '#c77dff', '#7c3aed', '#ffd700', '#ff69b4', '#00f5ff', '#7fff00'];
-    const confettiCount = 200;
+    const confettiCount = isMobile ? 60 : 100; // Reduced from 200
     
     for (let i = 0; i < confettiCount; i++) {
         setTimeout(() => {
@@ -243,9 +243,9 @@ function createMassiveConfetti() {
     }
 }
 
-// Fireworks effect
+// Fireworks effect - OPTIMIZED
 function createFireworks() {
-    const fireworkCount = 5;
+    const fireworkCount = isMobile ? 2 : 3; // Reduced from 5
     const colors = ['#ff6ec7', '#c77dff', '#ffd700', '#00f5ff', '#ff69b4'];
     
     for (let f = 0; f < fireworkCount; f++) {
@@ -285,7 +285,7 @@ function createFireworks() {
 }
 
 function explodeFirework(x, y, color) {
-    const particles = 30;
+    const particles = isMobile ? 15 : 20; // Reduced from 30
     for (let i = 0; i < particles; i++) {
         const particle = document.createElement('div');
         particle.style.cssText = `
@@ -325,12 +325,12 @@ function explodeFirework(x, y, color) {
     }
 }
 
-// Floating balloons
+// Floating balloons - OPTIMIZED
 function createFloatingBalloons() {
     const balloons = ['🎈', '🎈', '🎈', '🎈', '🎈'];
     const colors = ['filter: hue-rotate(0deg)', 'filter: hue-rotate(90deg)', 'filter: hue-rotate(180deg)', 'filter: hue-rotate(270deg)', 'filter: hue-rotate(320deg)'];
     
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < (isMobile ? 5 : 6); i++) { // Reduced from 8
         setTimeout(() => {
             const balloon = document.createElement('div');
             balloon.innerHTML = balloons[Math.floor(Math.random() * balloons.length)];

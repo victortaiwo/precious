@@ -730,19 +730,21 @@ body::before {
     font-weight: 300;
 }
 
-/* Finale Section */
+/* Finale Section - OPTIMIZED */
 .finale-section {
     min-height: 100vh;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem 3rem 2rem;
     position: relative;
     z-index: 2;
     overflow: hidden;
     max-width: 100vw;
     width: 100%;
+    scroll-margin-top: 150px;
 }
 
 .finale-section::before {
