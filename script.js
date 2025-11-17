@@ -173,7 +173,7 @@ const finaleObserver = new IntersectionObserver((entries) => {
             triggerEpicFinale();
         }
     });
-}, { threshold: 0.3 });
+}, { threshold: 0.05, rootMargin: '100px' });
 
 finaleObserver.observe(finaleSection);
 
@@ -367,11 +367,11 @@ function createFloatingBalloons() {
     }
 }
 
-// Dancing celebration emojis
+// Dancing celebration emojis - OPTIMIZED
 function createDancingEmojis() {
     const emojis = ['🎉', '🎊', '🥳', '🎂', '🎁', '💖', '✨', '🌟', '🎀', '💝'];
     
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < (isMobile ? 6 : 10); i++) { // Reduced from 15
         setTimeout(() => {
             const emoji = document.createElement('div');
             emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
@@ -405,9 +405,9 @@ function createDancingEmojis() {
     }
 }
 
-// Star burst from center
+// Star burst from center - OPTIMIZED
 function createStarBurst() {
-    const stars = 20;
+    const stars = isMobile ? 10 : 15; // Reduced from 20
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
     

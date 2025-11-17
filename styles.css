@@ -965,10 +965,19 @@ body::before {
         max-width: 100%;
     }
     
-    /* Disable glow animation on mobile for better performance */
+    /* Simplified animations on mobile */
     @media (max-width: 768px) {
         .polaroid {
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        /* Further reduce background effects */
+        body::after {
+            opacity: 0.5;
+        }
+        
+        body::before {
+            opacity: 0.5;
         }
     }
     
