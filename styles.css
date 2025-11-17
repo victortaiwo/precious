@@ -1072,6 +1072,10 @@ html {
 /* Prevent overscroll bounce on mobile */
 body {
     overscroll-behavior-y: none;
+    /* Prevent zoom-out on mobile */
+    touch-action: pan-y pan-x;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Optimize animations for mobile devices */
